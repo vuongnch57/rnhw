@@ -4,6 +4,7 @@ import {useCountryList} from '../../hooks/Home/useCountryList';
 import {CountryItem} from './CountryItem';
 import {StyledView, StyledText} from '../Styled';
 import {AppLayout} from '../Layout';
+import {CountryType} from '../../types/data';
 
 export const HomePage = () => {
   const {countries, loading, handleSelectCountry} = useCountryList();
@@ -40,6 +41,9 @@ export const HomePage = () => {
               marginVertical: 20,
             }}
             data={countries}
+            keyExtractor={(item: CountryType, index: number) =>
+              item?.code || index.toString()
+            }
             renderItem={({item}) => (
               <CountryItem
                 item={item}
